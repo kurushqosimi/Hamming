@@ -47,14 +47,10 @@ std::uint16_t Decode8T4Helper(uint8_t n, int byteNum) {
     bool C = p3 ^ d1 ^ d2 ^ d3 == 1;
     bool D = p1 ^ p2 ^ p3 ^ p4 ^ d1 ^ d2 ^ d3 ^ d4 == 1;
 
-    std::cout << "A: " << A << " B: " << B << " C: " << C << " D: " << D << std::endl;
-
     if ((!A || !B || !C) && D)
         return 256;
 
     int temp = !A + !B * 2 + !C * 4 + !D * 8;
-
-    std::cout << "TEMP: " << temp << std::endl;
 
     if (temp > 0)
         std::cout << "Strange... Searching for an error in byte #" << byteNum + 1 << std::endl;
@@ -62,19 +58,19 @@ std::uint16_t Decode8T4Helper(uint8_t n, int byteNum) {
     switch (temp) {
         case 15:
             d1 ^= 1;
-            std::cout << " Correcting 7-th bit...";
+            std::cout << " Correcting 7-th bit..."<<std::endl;
             break;
         case 14:
             d2 ^= 1;
-            std::cout << " Correcting 5-th bit...";
+            std::cout << " Correcting 5-th bit..."<<std::endl;
             break;
         case 13:
             d3 ^= 1;
-            std::cout << " Correcting 3-rd bit...";
+            std::cout << " Correcting 3-rd bit..."<<std::endl;
             break;
         case 11:
             d4 ^= 1;
-            std::cout << " Correcting 1-st bit...";
+            std::cout << " Correcting 1-st bit..."<<std::endl;
             break;
     }
 
