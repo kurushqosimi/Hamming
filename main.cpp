@@ -76,20 +76,27 @@ int main() {
         if (choice == 1) {
             int byteIndex = 0;
             int bitIndex = 0;
-            std::cout << "Enter the index of the byte you want to modify (0 to " << encodedData.size() - 1 << "): " <<
-                    std::endl;
-            std::cin >> byteIndex;
-            if (byteIndex < 0 || byteIndex >= encodedData.size()) {
-                std::cerr << "Invalid byte index!" << std::endl;
-            } else {
-                std::cout << "Enter the bit index you want to flip (0 to 7): " << std::endl;
-                std::cin >> bitIndex;
-                if (bitIndex < 0 || bitIndex > 7) {
-                    std::cerr << "Invalid bit index!" << std::endl;
+            int continueFlipping = 1;
+
+            while (continueFlipping == 1) {
+                std::cout << "Enter the index of the byte you want to modify (0 to " << encodedData.size() - 1 << "): "
+                        <<
+                        std::endl;
+                std::cin >> byteIndex;
+                if (byteIndex < 0 || byteIndex >= encodedData.size()) {
+                    std::cerr << "Invalid byte index!" << std::endl;
                 } else {
-                    encodedData[byteIndex] ^= (1 << bitIndex);
-                    std::cout << "Bit " << bitIndex << " in byte " << byteIndex << " flipped!" << std::endl;
+                    std::cout << "Enter the bit index you want to flip (0 to 7): " << std::endl;
+                    std::cin >> bitIndex;
+                    if (bitIndex < 0 || bitIndex > 7) {
+                        std::cerr << "Invalid bit index!" << std::endl;
+                    } else {
+                        encodedData[byteIndex] ^= (1 << bitIndex);
+                        std::cout << "Bit " << bitIndex << " in byte " << byteIndex << " flipped!" << std::endl;
+                    }
                 }
+                std::cout << "Would you like to flip another bit? (Yes - 1 / No - 2): "<<std::endl;
+                std::cin >> continueFlipping;
             }
 
             std::cout << "Encoded Data: ";
@@ -98,7 +105,7 @@ int main() {
                 std::cout << std::bitset<8>(n) << " ";
             }
         }
-        std::cout<<std::endl;
+        std::cout << std::endl;
 
         std::cout << "Which decoding algorithm to use? \n1. EvenBit Algorithm \n2. Hamming 8/4" << std::endl;
         std::cin >> choice;
