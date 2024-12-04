@@ -1,11 +1,14 @@
+
 # Hamming and EvenBit Encoding/Decoding
 
-This project implements two error correction algorithms: **Hamming 8/4** and **EvenBit**. It provides functionalities for encoding and decoding data, simulating transmission errors, and correcting them using the selected algorithms.
+This project implements two error correction algorithms: **Hamming 8/4** and **EvenBit**. It provides functionalities for encoding and decoding data, simulating transmission errors, and correcting them using the selected algorithms. 
 
 ## Table of Contents
 1. [Installation](#installation)
 2. [Usage](#usage)
 3. [Code Explanation](#code-explanation)
+4. [Contributing](#contributing)
+5. [License](#license)
 
 ## Installation
 
@@ -13,80 +16,112 @@ To build and run this project, follow these steps:
 
 ### Prerequisites
 
-1. **CMake** - The project uses CMake for the build system. You will need at least CMake 3.28.
-2. **C++ Compiler** - The project is written in C++17, so you'll need a compatible compiler like `g++` or `clang++`.
-3. **Git** - If you plan to clone the repository.
+Before you begin, ensure you have the following installed:
+
+- **CMake** - Version 3.28 or higher.
+- **C++ Compiler** - A compiler that supports C++17, such as `g++` or `clang++`.
+- **Git** - For cloning the repository.
 
 ### Steps
 
 1. **Clone the repository:**
 
-   If you haven't already cloned the repository, you can do so with the following command:
+   Clone the project to your local machine using the following command:
 
    ```bash
    git clone https://github.com/kurushqosimi/Hamming.git
-   cd Hamming 
+   cd Hamming
    ```
 
 2. **Build the project:**
 
    Create a build directory and use CMake to configure the project:
 
-    ```bash
+   ```bash
    mkdir build
-    cd build
-    cmake ..
-    make
+   cd build
+   cmake ..
+   make
    ```
-   
+
 3. **Run the executable:**
-    
-    After building the project, you can run the program using the following command:
-    
-    ```bash
-    ./Hamming
-    ```
+
+   After building the project, you can run the program:
+
+   ```bash
+   ./Hamming
+   ```
 
 ## Usage
 
-When you run the program, you will interact with a simple text-based interface for encoding and decoding data. Below are the key features:
+When you run the program, you'll interact with a simple text-based interface that allows you to encode, decode, and simulate transmission errors. Below are the key features and steps:
 
-1. **Default Data:** You can start with some predefined data, which consists of a few 4-bit numbers.
-2. **Data Entry:** You can add custom data to be encoded.
-3. **Encoding Algorithms:** You will be asked to select an encoding algorithm:
- - **EvenBit Algorithm:** Adds a parity bit to each byte to ensure even parity.
- - **Hamming 8/4:** Adds error-correcting bits to the data using the Hamming code.
+### Key Features
+
+1. **Default Data:** The program provides predefined 4-bit numbers to start with.
+2. **Custom Data Entry:** You can enter custom data to be encoded and decoded.
+3. **Encoding Algorithms:** Choose from the following encoding methods:
+   - **EvenBit Algorithm:** Adds a parity bit to each byte to ensure even parity.
+   - **Hamming 8/4:** Uses Hamming code to add error-correcting bits to the data.
 4. **Error Simulation:** After encoding, you can simulate transmission errors by flipping bits in the encoded data.
-5. **Decoding Algorithms:** After errors (if any), you will choose a decoding algorithm to recover the original data.
-6. **Interactive Flow:** You can continue encoding, decoding, adding errors, and adding more data until you decide to exit.
+5. **Decoding Algorithms:** After introducing errors, select a decoding algorithm to recover the original data.
+6. **Interactive Flow:** You can continue encoding, decoding, simulating errors, and adding more data until you decide to exit.
+
+### Example Workflow
+
+1. Choose **Hamming 8/4** or **EvenBit** encoding.
+2. Enter some data to encode.
+3. Optionally simulate transmission errors by flipping bits.
+4. Decode the data using the corresponding decoding method to correct any errors.
+5. Repeat the process as needed or exit.
 
 ## Code Explanation
 
-```main.cpp```
+### `main.cpp`
 
 This file contains the main logic for:
 
 - Taking user input for data encoding and decoding.
-- Calling encoding and decoding functions.
+- Calling the appropriate encoding and decoding functions.
 - Simulating errors and correcting them based on the selected algorithm.
 
-```hamming.cpp```
+### `hamming.cpp`
 
-This file contains the **Hamming 8/4** encoding and decoding functions:
+This file implements the **Hamming 8/4** encoding and decoding functions:
 
-- ```Encode8_4```: Encodes data using the Hamming 8/4 algorithm.
-- ```Decode8_4```: Decodes Hamming-encoded data, correcting single-bit errors if any.
+- **`Encode8_4`**: Encodes data using the Hamming 8/4 algorithm.
+- **`Decode8_4`**: Decodes Hamming-encoded data, correcting single-bit errors if any.
 
-```evenbit.cpp```
+### `evenbit.cpp`
 
-This file contains the EvenBit encoding and decoding functions:
+This file implements the EvenBit encoding and decoding functions:
 
-- ```EncodeEvenBit```: Encodes data by adding a parity bit to ensure even parity.
-- ```DecodeEvenBit```: Decodes data and checks for parity errors.
+- **`EncodeEvenBit`**: Encodes data by adding a parity bit to ensure even parity.
+- **`DecodeEvenBit`**: Decodes data and checks for parity errors.
+
+### `CMakeLists.txt`
+
+This file is used to configure the build process. It defines how to compile the project and link any necessary libraries.
+
+## Contributing
+
+We welcome contributions to improve this project! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Commit your changes and push to your fork.
+4. Open a pull request for review.
+
+Please make sure to write clear commit messages and follow the project’s coding style.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
-```CMakeLists.txt```
-This file is used to configure the build process:
-
-- It defines how to compile the project and link the necessary libraries.
-
+### Improvements made:
+1. **Clarity in Installation and Usage**: Steps are more clear and precise, making it easier for users to follow.
+2. **Section Titles**: Added section for **Contributing** and **License**, which is standard for open-source projects.
+3. **Workflow Example**: Provided a sample workflow for a clearer understanding of how the application works.
+4. **Code Organization**: Added descriptions for code files with detailed explanations for each file's purpose.
+5. **Text formatting**: Improved consistency in headings and list formatting.
